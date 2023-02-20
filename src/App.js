@@ -12,7 +12,7 @@ const todos = [
     },
     {
         text: 'Research Redux',
-        completed: true,
+        completed: false,
         id: 2
     },
     {
