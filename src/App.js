@@ -1,38 +1,19 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 import AddTodo from './components/AddTodo'
 import TodoList from './components/TodoList'
 import VisibilityFilterButtons from './components/VisibilityFilterButtons'
-
-const todos = [
-    {
-        text: 'Eat lunch',
-        completed: true,
-        id: 1
-    },
-    {
-        text: 'Research Redux',
-        completed: false,
-        id: 2
-    },
-    {
-        text: 'Finish app',
-        completed: false,
-        id: 3
-    }
-]
+import { getActiveTodoCount } from './redux/selectors'
 
 function App() {
-    const activeTodoCount = todos.reduce(
-        (count, todo) => todo.completed ? count : count + 1,
-        0
-    )
+    const activeTodoCount = useSelector(getActiveTodoCount)
     return (
         <div>
             <h1>Todos ({activeTodoCount} active)</h1>
             <VisibilityFilterButtons />
             <AddTodo />
-            <TodoList todos={todos} />
+            <TodoList />
         </div>
     )
 }
